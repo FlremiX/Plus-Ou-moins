@@ -19,7 +19,7 @@ int main ( int argc, char** argv )
     printf("Niveau 1 : le nombre mystere se situe entre 1 et 100 (Choix 1)\nNiveau 2 : le nombre se situe entre 1 et 1000 (Choix 2)\nNiveau 3 : le nombre se situe entre 1 et 10.000 (Choix 3)\nMode Chalenge : Pour plus d'informations, tapez 4\nTapez le numero de votre choix : ");
     scanf("%d", &niveau);
     printf("\nNiveau choisi : %d\n", niveau);
-    system("timeout(2000)");
+    system("timeout 1");
     system("cls");
 
     // Génération des nombres aléatoire :
@@ -30,7 +30,7 @@ int main ( int argc, char** argv )
     //Explications concernant le mode chalenge
     else { printf("Nombre rentre invalide... Rentrer a nouveau le choix du niveau :\n"); cache1 = 1; }
     if (challengMod == 1){ MAX = 10000, MIN = 1; printf("\nEn combien de tours le nombre doit-il etre trouve ?\nEntrez le nombre de tours : "); scanf("%d", &tours); compteurCoups =tours; printf("\nLe nombre doit-etre trouve en %d tours\nGood Luck !\n", tours); }
-    else if (challengMod == 0){ printf("Vous etes renvoyer au choix des niveaux...\n"); cache1 = 1; system("timeout(2000)"); system("cls"); }
+    else if (challengMod == 0){ printf("Vous etes renvoyer au choix des niveaux...\n"); cache1 = 1; system("timeout 1"); system("cls"); }
     else if (challengMod != 0 && challengMod != 1 && challengMod != 2) { printf("Choix incorrecte, Vous etes renvoyer aux choix des niveaux...\n"); cache1 = 1; system("cls"); }
     }while (cache1 == 1);
     nombreMystere = 0;
@@ -62,8 +62,11 @@ int main ( int argc, char** argv )
            else if (challengMod == 1){ system("title ChallengeMod [ON] :: Victoire ! ::"); printf("Bravo, vous avez gagne ! Vous avez trouvez le nombre malgre la limite de tours !\nVous avez utilise %d sur %d de vos tours !\n", compteurCoups, tours);}
     } while (nombreEntre != nombreMystere || compteurCoups == 0);
     if (challengMod == 1 && compteurCoups == 0){ system("title ChallengeMod [OFF] :: Game Over... ::"); printf("\nPerdu... Le nombre etait %d\n", nombreMystere);}
-    printf("Voulez-vous recommencer le jeu ? [Oui = 1, Non = 0]\n");
+    printf("Voulez-vous recommencer le jeu ? [Oui = 1, Non = 0] ");
     scanf("%d", &continuerPartie);
+    printf("\n");
     } while (continuerPartie != 0);
     system("exit");
+    system("timeout 1");
+    return 0;
 }
